@@ -56,7 +56,7 @@ def registrarse():
             new_user = User(email=email, nombre=nombre, apellidos=apellidos, password=generate_password_hash(password1, method='scrypt', salt_length=16))
             db.session.add(new_user)
             db.session.commit()
-            login_user(user, remember=True)
+            login_user(new_user, remember=True)
             flash('Cuenta creada correctamente', category='success')
             return redirect(url_for('views.home'))
 
